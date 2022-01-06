@@ -38,7 +38,7 @@ export default {
 
 <style lang="scss">
 #app {
-  background: linear-gradient(105deg, var(--v-primary-darken3) 0%, var(--v-primary-base) 100%) !important;
+  background: linear-gradient(105deg, var(--v-primary-darken3) 0%, var(--v-primary-darken2) 100%) !important;
   background-repeat: no-repeat;
   background-attachment: cover;
   background-attachment: fixed;
@@ -75,7 +75,7 @@ footer {
     }
 
     i:hover:before {
-      color: var(--v-primary-lighten2);
+      color: var(--v-primary-base);
       font-size: 1.25em;
     }
   }

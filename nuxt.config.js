@@ -18,6 +18,7 @@ export default {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'apple-touch-icon', type: 'image/x-icon', href: '/apple-touch.png' },
     ],
   },
 
@@ -59,7 +60,7 @@ export default {
       dark: false,
       themes: {
         light: {
-          primary: '#243b55',
+          primary: '#1E90FF',
           accent: colors.grey.darken4,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
@@ -69,7 +70,7 @@ export default {
           background: 'white'
         },
         dark: {
-          primary: '#243b55',
+          primary: '#1E90FF',
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
