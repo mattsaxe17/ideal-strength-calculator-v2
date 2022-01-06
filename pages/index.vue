@@ -8,8 +8,8 @@
 
         <v-card-text>
           <v-form v-model="valid" ref="form" lazy-validation>
-            <div class="card-row"><span>I can</span></div>
-            <div class="card-row">
+            <v-row><span>I can</span></v-row>
+            <v-row>
               <v-input>
                 <v-select
                   v-model="form.exerciseId"
@@ -20,11 +20,12 @@
                   label="exercise"
                   outlined
                   dense
-                  single-line
+                  filled
+                  hide-details
                 ></v-select>
               </v-input>
-            </div>
-            <div class="card-row" id="weight-selector">
+            </v-row>
+            <v-row id="weight-selector">
               <div>
                 <v-input>
                   <v-text-field
@@ -34,6 +35,8 @@
                     type="number"
                     outlined
                     dense
+                    filled
+                    hide-details
                   ></v-text-field>
                 </v-input>
               </div>
@@ -47,31 +50,37 @@
                     :value="units[0]"
                     outlined
                     dense
+                    filled
+                    hide-details
                   ></v-select>
                 </v-input>
               </div>
-            </div>
-            <div class="card-row" id="reps-selector">
+            </v-row>
+            <v-row id="reps-selector">
               <span>for</span>
-              <v-input>
-                <v-text-field
-                  v-model="form.reps"
-                  :rules="[rules.required, rules.boundReps]"
-                  label="reps"
-                  type="number"
-                  outlined
-                  dense
-                ></v-text-field>
-              </v-input>
+              <v-col cols="3" sm="3">
+                <v-input>
+                  <v-text-field
+                    v-model="form.reps"
+                    :rules="[rules.required, rules.boundReps]"
+                    label="reps"
+                    type="number"
+                    outlined
+                    dense
+                    filled
+                    hide-details
+                  ></v-text-field>
+                </v-input>
+              </v-col>
               <span>rep{{ form.reps !== 1 ? 's' : '' }}.</span>
-            </div>
+            </v-row>
           </v-form>
         </v-card-text>
 
         <v-card-actions>
           <div id="action-buttons">
-            <v-btn color="primary" @click="reset" large>Reset</v-btn>
-            <v-btn color="primary" @click="calculate" large>Calculate</v-btn>
+            <v-btn color="accent" @click="reset" large rounded>Reset</v-btn>
+            <v-btn color="accent" @click="calculate" large rounded>Calculate</v-btn>
           </div>
         </v-card-actions>
       </v-card>
@@ -118,6 +127,7 @@
                 type="number"
                 outlined
                 dense
+                filled
               ></v-text-field>
             </v-input>
           </v-form>
@@ -158,7 +168,8 @@
                 label="exercise"
                 outlined
                 dense
-                single-line
+                filled
+                hide-details
               ></v-select>
             </v-input>
           </v-form>
@@ -282,19 +293,67 @@ export default {
   word-break: normal;
 }
 
-section {
+#hero {
+  min-height: 100vh;
   display: grid;
+  justify-content: center;
   align-items: center;
-  justify-content: stretch;
 
-  &#hero {
-    min-height: 100vh;
+  .v-card {
+    width: 750px;
+    max-width: 95vw;
+
+    .v-form {
+      max-width: 500px;
+      margin: auto;
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 1em;
+    }
+
+    #action-buttons {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      gap: 1em;
+    }
+  }
+
+  & > div:nth-of-type(2) {
+    display: flex;
+    justify-content: space-between;
   }
 }
 
-.card-row {
+#results {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+  justify-content: center;
+
+  .v-card {
+    min-width: 200px;
+    max-width: 400px;
+  }
+}
+
+.v-card {
+  padding: 1.5em;
+}
+
+.row {
   font-size: 2em;
   display: flex;
+  padding-bottom: 0.5em;
+  display: flex;
+  flex-wrap: nowrap;
+
+  & > div {
+    padding: 0;
+  }
 
   span {
     padding: 0.25em 0 0.5em 0;
@@ -302,8 +361,6 @@ section {
 
   &#weight-selector {
     & > div:nth-of-type(1) {
-      width: 95%;
-
       .v-text-field {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;

@@ -15,7 +15,7 @@
           </div>
         </div>
         <div>
-          <p>
+          <p id="disclaimer">
             *Calculations are meant to provide a baseline of weight and repetition values based on common research on
             the ratios of ideal strength between certain exercises. The results may not accurately portray your specific
             case, and do NOT warrant the attempt of any given exercise using a certain weight. Please use these values
@@ -38,10 +38,14 @@ export default {
 
 <style lang="scss">
 #app {
-  background: linear-gradient(105deg, var(--v-primary-base) 0%, var(--v-primary-darken3) 100%) !important;
+  background: linear-gradient(105deg, var(--v-primary-darken3) 0%, var(--v-primary-darken2) 100%) !important;
   background-repeat: no-repeat;
   background-attachment: cover;
   background-attachment: fixed;
+}
+
+#disclaimer {
+  font-size: 0.75em;
 }
 
 footer {
@@ -66,8 +70,12 @@ footer {
   a {
     text-decoration: none;
 
+    i:before {
+      color: var(--v-accent-base);
+    }
+
     i:hover:before {
-      color: var(--v-primary-lighten2);
+      color: var(--v-primary-base);
       font-size: 1.25em;
     }
   }
